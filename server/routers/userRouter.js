@@ -3,8 +3,7 @@ const router = express.Router();
 const userFunctions = require('../middleware/userMiddleware');
 
 router.post('/signup', userFunctions.signUp, (req, res) => {
-    res.status(200).json(res.locals);
-    return;
+    return res.status(200).json(res.locals);
 })
 
 router.get('/login', userFunctions.logIn, (req, res) => {
