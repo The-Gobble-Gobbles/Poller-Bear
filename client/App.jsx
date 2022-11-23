@@ -20,13 +20,12 @@ function App() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-        <ul className="navbar-nav float-end" activeStyle = '/stylesheet/styles.css'>  
-          <li className="nav-link"><Link to='/login' >Login</Link></li>
-          <li className="nav-link"><Link to='/signup'>Sign-up</Link></li>
-          <li className="nav-link"><Link to='/'>Home</Link></li> 
-          <li className="nav-link"><Link to='/1/display'>Display1</Link></li>
-        </ul>
+    <h1>Welcome to POLLar Bear</h1>
+      <nav className="navbar">
+        <Link to='/' className="nav-link">Home</Link>
+        <Link to='/login' className="nav-link">Login</Link>
+        <Link to='/signup' className="nav-link">Sign-up</Link>
+        <Link to='/1/display' className="nav-link">Display1</Link>
       </nav>
 
       <Routes>

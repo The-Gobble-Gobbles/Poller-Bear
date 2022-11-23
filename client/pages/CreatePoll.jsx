@@ -36,11 +36,11 @@ export const CreatePoll = () => {
   }
 
   return <div>
-    <h1 className='text-center'>Create a Poll</h1>
-    <div className='m-auto p-3 border border-info rounded form-wrapper'>
+    <h2 className='text-center'>Create a Poll</h2>
+    <div className='pollFormComponents'>
 
       <form onSubmit={handleFormData}>
-        <label><strong>Title</strong></label>
+        <label><strong>Poll Question</strong></label>
         <div className="input-group mb-3">
           <input  type="text" name="title" className="form-control border border-info" placeholder="Type your question here" required/>
         </div>
