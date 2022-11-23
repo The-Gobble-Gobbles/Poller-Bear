@@ -1,5 +1,8 @@
 {
   "name": "scratch",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "description": "Application to create polls and share",
   "main": "index.js",
@@ -9,7 +12,8 @@
     "dev-back": "nodemon server/server.js",
     "dev-hour": "npm run dev-back & npm run dev-front",
     "prod-hour": "npm run build && nodemon server/server.js",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "testjc": "jest --verbose --config=./__test__/jestjc.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +30,7 @@
     "testEnvironment": "jest-environment-jsdom"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "@babel/plugin-transform-async-to-generator": "^7.1.0",
     "chart.js": "^4.0.1",
     "concurrently": "^7.5.0",
@@ -68,7 +73,7 @@
     "sass-loader": "^13.2.0",
     "source-map-loader": "^4.0.1",
     "style-loader": "^3.3.1",
-    "supertest": "^6.2.3",
+    "supertest": "^6.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^4.11.1"
