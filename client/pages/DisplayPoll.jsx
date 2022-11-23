@@ -7,106 +7,91 @@ import { Chart as ChartJS} from 'chart.js/auto'
 // npm install react-chartjs-2
 
 function DisplayPoll() {
+  const [polls, setPolls] = useState([]);
+  const {id} = useParams();
 
-    const [polls, setPolls] = useState([]);
-    const {id} = useParams();
-
-    const [value, setValue] = useState('')
-    const [updated, setUpdated] = useState(0);
+  const [value, setValue] = useState('');
+  const [updated, setUpdated] = useState(0);
   //   const [, updateState] = React.useState();
   // const forceUpdate = React.useCallback(() => updateState({}), []);
 
-
-    useEffect(()=>{
-        const fetchPolls = async () => {
-            let response = await fetch(`http://localhost:3000/api/poll/${id}/display`)
-        let data = await response.json()
-
-        setPolls(data.poll)
-  
-        }
-        fetchPolls()
-        .catch(console.err)
-    },[])  
-
-  
-    async function handleDelete(e, key, poll_id, users, entries) {
-        console.log("entering handleSubmit?")
-        e.preventDefault();
-        
-        async function postFlask (){
-         const response = await fetch(`http://localhost:3000/api/poll/${poll_id}/${key}`, {
-            method: 'DELETE'
-      
-            })
-        }
-        await postFlask()
-        .catch(err => console.log('error in post server deleting flask'))
-        // navigateFlaskHome()
-
+  useEffect(()=>{
       const fetchPolls = async () => {
-        let response = await fetch(`http://localhost:3000/api/poll/${id}/display`)
-        let data = await response.json()
-        setPolls(data.poll)
-        }
-        await fetchPolls()
-        .catch(console.err)
-       
+        let response = await fetch(`http://localhost:3000/api/poll/${id}/display`);
+        let data = await response.json();
+        setPolls(data.poll);
       }
-      //filtered poll:  removed all rows that did not have entries.  
-    let filteredPoll = polls.filter(poll => poll.entries !== null)
-    // console.log('filteredPoll', filteredPoll)
-    const pollResult = {}
-    const pollOptions = polls.filter(poll => poll.poll_options !==null)
-    //making sure graph contains all poll_options since it is filtered out in the entries
-    pollOptions.forEach(poll => {
-        pollResult[poll.poll_options] = 0
-    })
-    // console.log('pollOptions, check if it has all options, fish', pollOptions)
-    // console.log( 'pollResult', pollResult)
-    
-    filteredPoll.forEach(poll => {
-        pollResult[poll.entries] ? pollResult[poll.entries]++ : pollResult[poll.entries] = 1;
-    })
-    // console.log('pollResult', pollResult)
-    // console.log('Object.entries(pollResult)', Object.entries(pollResult))
-    const test = Object.entries(pollResult).map(entry=> entry[0]);
+      fetchPolls()
+      .catch(console.err)
+    },
+  [])  
 
-    //
-    const pollGraph = {
-        labels: Object.entries(pollResult).map((entry)=> entry[0]),
-        datasets: [{
-          label: "votes",
-          data: Object.entries(pollResult).map((entry)=> entry[1])
-        }],
-        
-        
-      }
-
-      //getting the prompt to display on top of the page
-      let prompt = polls.filter(poll => poll.poll_prompt !== null)
-    //   console.log('prompt[0]', (prompt[0]))
-    //   let oneObj = prompt[0]
-    //   console.log('oneObj', {...prompt[0]}.poll_prompt)
-// 
-    return (
-     
-     <div className="displayPoll mb-5">
-          <hr id='newPollhr'></hr>
-    
-      <div className="displayPrompt text-secondary"><h1>{{...prompt[0]}.poll_prompt}</h1></div>        
+  async function handleDelete(e, key, poll_id, users, entries) {
+    console.log("entering handleSubmit?")
+    e.preventDefault();
+    async function postFlask (){
+      const response = await fetch(`http://localhost:3000/api/poll/${poll_id}/${key}`, {
+        method: 'DELETE'
+      })
+    }
+    await postFlask()
+    .catch(err => console.log('error in post server deleting flask'))
+    // navigateFlaskHome()
+    const fetchPolls = async () => {
+      let response = await fetch(`http://localhost:3000/api/poll/${id}/display`)
+      let data = await response.json()
+      setPolls(data.poll)
+    }
+    await fetchPolls()
+    .catch(console.err)
+  }
+  //filtered poll:  removed all rows that did not have entries.  
+  let filteredPoll = polls.filter(poll => poll.entries !== null)
+  // console.log('filteredPoll', filteredPoll)
+  const pollResult = {}
+  const pollOptions = polls.filter(poll => poll.poll_options !==null)
+  //making sure graph contains all poll_options since it is filtered out in the entries
+  pollOptions.forEach(poll => {
+    pollResult[poll.poll_options] = 0
+  })
+  // console.log('pollOptions, check if it has all options, fish', pollOptions)
+  // console.log( 'pollResult', pollResult)
+  filteredPoll.forEach(poll => {
+    pollResult[poll.entries] ? pollResult[poll.entries]++ : pollResult[poll.entries] = 1;
+  })
+  // console.log('pollResult', pollResult)
+  // console.log('Object.entries(pollResult)', Object.entries(pollResult))
+  const test = Object.entries(pollResult).map(entry=> entry[0]);
+  const pollGraph = {
+    labels: Object.entries(pollResult).map((entry)=> entry[0]),
+    datasets: [{
+      label: "votes",
+      data: Object.entries(pollResult).map((entry)=> entry[1])
+    }],  
+  }
+  //getting the prompt to display on top of the page
+  let prompt = polls.filter(poll => poll.poll_prompt !== null)
+  //   console.log('prompt[0]', (prompt[0]))
+  //   let oneObj = prompt[0]
+  //   console.log('oneObj', {...prompt[0]}.poll_prompt)
+  return (
+    <div className="displayPoll">
+      <hr id='newPollhr'></hr>
+      <div className="displayPrompt text-secondary">
+        <h1>Poll Question: {{...prompt[0]}.poll_prompt}</h1>
+      </div>        
     {/* bar chart below */}
       <div className="barchartdiv mb-5">
-         <h3 className="text-center text-muted">Poll Graph</h3>
-         <Bar className="display-barchart" data={pollGraph} /> 
-        </div>
+        <h3 className="text-center text-muted">Poll Graph</h3>
+        <Bar className="display-barchart" data={pollGraph} /> 
+      </div>
     {/*  */}
      
    
-     {/*  */} 
-     <h3 className="text-muted mt-5">Individual Results</h3>
-     <div className="display-list-group2 mt-2 mb-5">
-     <table className="table table-hover table-light">
+
+     {/* <h3 className="text-muted mt-5">Individual Results</h3> */}
+     {/* <div className="display-list-group2 mt-2 mb-5"> */}
+     {/* <table className="table table-hover table-light">
        <thead>
          <tr className="bg-primary table-warning">
              
@@ -115,7 +100,7 @@ function DisplayPoll() {
              <th className="text-center" scope="col">Delete</th>
          </tr>
        </thead>
-
+   
        <tbody>
 
              {   filteredPoll &&
@@ -125,15 +110,15 @@ function DisplayPoll() {
                              
                              <td className="text-center">{poll.users}</td>
                              <td className="text-center">{poll.entries}</td>
-                             <td className="text-center"><button type="submit" onClick={(e) => handleDelete(e, poll.id, poll.poll_id, poll.users, poll.entries)} className="btn btn-danger btn-sm ">Delete</button></td>
+                             <td className="text-center"></td>
                          </tr>
                      )
                  })
              }
         
        </tbody>
-     </table>
-   </div>
+     </table> */}
+   {/* </div> */}
      
      {/*  */}
 
@@ -193,13 +178,15 @@ function UpdateTable({poll, setValue}) {
          </div> 
             <button type="submit" onClick={(e) => handleSubmit(e, poll.id, poll.poll_id)} className="btn btn-warning btn-sm  ">Update</button>   
           </div>
-                         
-          </form>
+          
+                    
+      </form>
      
     </div>
   )
 }
 
-
+{/* <button type="submit" onClick={(e) => handleDelete(e, poll.id, poll.poll_id, poll.users, poll.entries)} className="btn btn-danger btn-sm ">Delete</button>
+TakePoll*/}
 
 export { DisplayPoll, UpdateTable }

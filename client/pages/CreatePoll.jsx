@@ -47,8 +47,9 @@ export const CreatePoll = () => {
         </div>
 
         <label><p id='answerOptions'>Answer Options:</p></label>
-        {numOfQuestions}
-
+        <div className='numOfQuestions'>
+          {numOfQuestions}
+        </div>
         <button className="addOption" type="button" onClick={() => setQuestions(questions + 1)}>Add Option</button>
         <button className="createPoll" type="submit" >Create Poll</button>
       </form>
