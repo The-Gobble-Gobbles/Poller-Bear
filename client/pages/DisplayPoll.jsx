@@ -141,7 +141,7 @@ function DisplayPoll() {
      {   polls.filter(poll => poll.entries !== null) &&
       polls.filter(poll => poll.entries !== null).map(poll => { return (<UpdateTable poll={poll} setValue={setValue}></UpdateTable>) })
       }
-
+      <button type="submit" onClick={(e) => handleDelete(e, poll.id, poll.poll_id, poll.users, poll.entries)} className="btn btn-danger btn-sm ">Delete</button>
     </div>
     )
 }

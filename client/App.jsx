@@ -18,8 +18,16 @@ function App() {
     navigate(location.path);
   }, [])
 
+  const snowflakes = [];
+
+  for (let i = 0; i < 50; i++) {
+    snowflakes.push(<div className="snowflake"></div>)
+  }
+  
+
   return (
     <>
+    {snowflakes}
     <h1 id='title'>Poller Bear</h1>
       <nav className="navbar">
         <Link to='/' className="nav-link">Home</Link>

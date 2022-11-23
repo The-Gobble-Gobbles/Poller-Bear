@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
-import styles from './stylesheets/styles.css';
+import styles from './stylesheets/styles.scss';
 
 // Create a root.
 const root = ReactDOM.createRoot(document.getElementById('root'));
