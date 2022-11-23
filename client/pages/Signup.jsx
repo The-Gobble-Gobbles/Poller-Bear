@@ -4,13 +4,18 @@ import React from "react";
     //check other inputs for bootstrap styling they used to keep it consistent
     //test would check if db contains values sent or something?  
     //How to test db w jest
-    /*
+
+function Signup() {
 
     const [user, setUser] = useState({
         "email": '',
         "password": ''
     })
 
+<<<<<<< HEAD
+    const handleSubmit = e => {
+        e.preventDefault();
+=======
     async function saveUser(data) {
         const response = await fetch('db url', {
             method: 'POST",
@@ -28,19 +33,21 @@ import React from "react";
             "email": email.value,
             "password": password.value
         })
+>>>>>>> 8f7cddbb1a1b6cf829193d9d2816b8561fdcbd55
     } 
-
-
-    <form>
-        <div className="input-group mb-3">
-            <input  type="text" name="email" className="form-control" placeholder="email" required/>
-            <input  type="text" name="password" className="form-control" placeholder="password" required/>
+    return (
+        <>
+            <h1>Signup</h1>
+            <form>
+                <div className="input-group mb-3">
+                <input  type="text" name="email" className="form-control" placeholder="email" required/>
+                <input  type="text" name="password" className="form-control" placeholder="password" required/>
             <button type="submit" >Signup</button>
         </div>
     </form>
-    */
-function Signup() {
-    return (<h1>Signup</h1>)
+        </>
+
+    )
 }
 
 export default Signup;
