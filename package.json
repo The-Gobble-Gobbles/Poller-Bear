@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/Red-lipped-Batfish-54/scratch#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "chart.js": "^4.0.1",
     "concurrently": "^7.5.0",
     "cookie-parser": "^1.4.6",

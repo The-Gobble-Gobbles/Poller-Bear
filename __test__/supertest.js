@@ -2,14 +2,10 @@ const request = require('supertest');
 // const CreatePoll = require('../client/pages/CreatePoll.jsx')
 const server = 'http://localhost:3000';
 const path = require('path');
+const middlewareUser = require('../server/middleware/userMiddleware.js');
+const { response } = require('express');
 
-beforeAll(done => {
-  done();
-})
 
-afterAll(done => {
-  done();
-})
 
 xdescribe('Route integration', () => {
   describe('/', () => {
@@ -45,26 +41,55 @@ describe('signup', () => {
   //should return error if either field is empty
   //should contain username and password properties on body
   //should update database with new user
+  //implement bcrypt
 
 
   // working blueprint --
   describe('POST', () => {
-    it('responds with 200 status and appplication/JSON content type', async () => {
-      await request(server)
+    it('responds with 200 status and appplication/JSON content type', () => {
+       request(server)
       .post('/api/user/signup')
       .send(JSON.stringify(dummyObj))
-      .expect('Content-Type', /application\/json/)
-      .expect(200)
+      .end((err, res) => {
+        expect('Content-Type', /application\/json/)
+        .expect(200)
+      })
+
 
     })
   });
 
+  describe('Request body includes proper details', () => {
+    const badDummyRequest = {
+      username: undefined,
+      password: undefined
+    }
+
+    const goodDummyRequest = {
+      username: "turkey",
+      password: "gobble"
+    }
+
+    it('return an error when req body is not filled out', () => {
+      request(server)
+        .post('/api/user/signup')
+        .send(JSON.stringify(badDummyRequest))
+        .end((err, res) => {
+          expect(err)
+        })
+      });
+    
+
+
+      
+    })
+   
+  })
+  
 
 
 
 
-
-})
 
 
 

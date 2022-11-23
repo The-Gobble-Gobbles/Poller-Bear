@@ -38,7 +38,6 @@ app.get('/bundle.js.map', (req, res) => {
 // Handle routes to user functionality
 app.use('/api/user', 
   userRouter
-  
 );
 
 // Handle routes to poll functionality
