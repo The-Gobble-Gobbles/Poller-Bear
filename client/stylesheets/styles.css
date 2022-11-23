@@ -1,19 +1,33 @@
-body {
-    margin: 0px;
-    line-height: 1.3;
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color: rgb(240, 208, 208);
-    background-image: url(https://i.pinimg.com/736x/aa/db/56/aadb5612d8eb7361ab03c3d7e2b07762.jpg);
-    background-size: cover;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto&display=swap');
+
+html {
+    height: 100%;
+    max-height: 100%;
 }
 
+body {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0px;
+    line-height: 1.3;
+    font-family: Montserrat;
+    color: rgb(59, 59, 59);
+}
+
+#title {
+    text-align: center;
+    margin-top: 100px;
+}
 
 .displayPrompt {
     margin: 5% 5%
 }
 
 .displayPoll {
-    background-image: url(https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=2000);
+    /* background-image: url(https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=2000); */
     background-size: cover;
     display: flex;
     width: 100%;
@@ -31,6 +45,7 @@ body {
     width: 800px;
 
 }
+
 .display-barchart {
     /* margin: 10rem 10rem 10rem 10rem; */
     width: 800px;
@@ -38,23 +53,166 @@ body {
     /* flex: flex-grow; */
 
   }
+
 .navbar{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    display: flex;
+    justify-content: space-evenly;
     text-align: center;
-    background: pink;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
+#newPollhr {
+    border: 1px solid gainsboro;
+    margin-bottom: 3em;
+    width: 100%
+}
+
 .nav-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+    font-weight: 600;
+    max-width: 70%;
+    border-radius: 10px;
+    height: 50px;
+    min-width: 10%;
 }
+
+.nav-link:visited {
+    color: rgb(125, 125, 125);
+}
+
+.nav-link:hover {
+    color:  rgb(60, 60, 60);
+    font-weight: 800;
+    background: rgb(240, 240, 240);
+    font-family: sans-serif;
+}
+
+.nav-link:active {
+    color:  #b7d6eb;
+}
+
+.newPollContainer h2{
+    text-align: center;
+    font-family: Roboto;
+    font-size: 30px;
+}
+
+.newPollContainer h2:hover, p:hover {
+    cursor: default;
+    font-family: Montserrat;
+    color: rgb(188, 188, 188);
+}
+
+.newPollContainer label {
+    font-size: 20px;
+    font-family: Roboto;
+}
+
+input:focus {
+    outline: 1px solid rgb(195, 195, 195);
+}
+
+input {
+    height: 30px;
+    border-radius: 10px;
+    border-style: solid;
+    padding-left: 8px;
+    font-size: 16px;
+}
+
+.newPoll {
+    width: 100%;
+}
+
+.newPoll input {
+    width: 50%;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+#answerOptions {
+    margin-bottom: 15px;
+}
+
+.pollOption {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 10px;
+}
+
+.pollOption button {
+    width: 35px;
+    font: arial;
+    font-weight: 600;
+}
+
+.addOption {
+    margin-right: 10px;
+}
+
+.createPoll {
+    margin-left: 10px;
+    background-color: rgb(254, 206, 118);
+}
+
 .text-center {
     display: grid;
     text-align: center;
 }
-.pollFormComponents{
+
+.pollFormComponents {
     display: grid;
     text-align: center;
 }
+
+.signupHTag{
+    text-align: center;
+    font-family: Roboto;
+    font-size: 30px;
+}
+
+.signupHTag:hover{
+    cursor: default;
+    font-family: Montserrat;
+    color: rgb(188, 188, 188);
+}
+
+.signupPage {
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 2px
+}
+
+.signupEmailForm {
+    box-sizing: content-box;
+    width: 50%;
+    padding: 10px
+}
+
+button {
+    width: fit-content;
+    border: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color:  #b7d6eb;
+    color: #283d63;
+}
+
+button:active {
+    background-color: rgb(152, 199, 230);
+    color: white;
+}
+
 .form-wrapper {
     width: 40%;
 }

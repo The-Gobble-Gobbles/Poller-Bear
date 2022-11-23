@@ -20,12 +20,12 @@ function App() {
 
   return (
     <>
-    <h1>Welcome to POLLar Bear</h1>
+    <h1 id='title'>Poller Bear</h1>
       <nav className="navbar">
         <Link to='/' className="nav-link">Home</Link>
         <Link to='/login' className="nav-link">Login</Link>
         <Link to='/signup' className="nav-link">Sign-up</Link>
-        <Link to='/1/display' className="nav-link">Display1</Link>
+        <Link to='/1/display' className="nav-link">Current Poll</Link>
       </nav>
 
       <Routes>

@@ -92,6 +92,7 @@ function DisplayPoll() {
     return (
      
      <div className="displayPoll mb-5">
+          <hr id='newPollhr'></hr>
     
       <div className="displayPrompt text-secondary"><h1>{{...prompt[0]}.poll_prompt}</h1></div>        
     {/* bar chart below */}
