@@ -20,12 +20,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    
 }
 
 .display-list-group {
     width: 100;
-
 }
 
 .display-list-group2 {
@@ -40,7 +39,12 @@ body {
 
   }
 
-
+.nav-link {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: pink;
+}
 
 .form-wrapper {
     width: 40%;

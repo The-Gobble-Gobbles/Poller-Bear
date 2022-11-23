@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const userFunctions = require('../middleware/userMiddleware');
 
-router.post('/signup', userFunctions.signUp, (req, res) => {
+router.post('/signup', 
+
+userFunctions.signUp, (req, res) => {
     return res.status(200).json(res.locals);
 })
 

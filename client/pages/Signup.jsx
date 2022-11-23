@@ -12,8 +12,28 @@ function Signup() {
         "password": ''
     })
 
+<<<<<<< HEAD
     const handleSubmit = e => {
         e.preventDefault();
+=======
+    async function saveUser(data) {
+        const response = await fetch('db url', {
+            method: 'POST",
+            headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data),
+        })
+        return response.json();
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        setUser({
+            "email": email.value,
+            "password": password.value
+        })
+>>>>>>> 8f7cddbb1a1b6cf829193d9d2816b8561fdcbd55
     } 
     return (
         <>
