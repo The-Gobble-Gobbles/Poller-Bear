@@ -1,3 +1,6 @@
+
+const bcrypt = require('bcryptjs');
+
 const middleware = {};
 
 // Sign Up
@@ -22,8 +25,14 @@ middleware.logIn = (req, res, next) => {
     return;
 }
 
-middleware.hashInfo = (req, res, next) => {
+middleware.hashInfo = async (req, res, next) => {
+    const hashedObj = middleware.hashHelper(req.body);
+    const { hashedUsername, hashedPassword } = hashedObj;
+
     console.log('hashed?');
+    // invoke hash helper here with req.body passed in
+    res.locals.hashedUsername = hashedUsername;
+    res.locals.hashedPassword = hashedPassword;
     return next();
 }
 
@@ -34,5 +43,12 @@ middleware.verifyUser = (req, res, next) => {
     return;
 }
 
+// a helper function
+middleware.hashHelper = async (obj) => {
+    const { username, password } = obj;
+    const hashedUsername = await bcrypt.hash(username, 5);
+    const hashedPassword = await bcrypt.hash(password, 5);
+    return {username: hashedUsername, password: hashedPassword}
+}
 
 module.exports = middleware;

@@ -12,8 +12,8 @@
     "dev-back": "nodemon server/server.js",
     "dev-hour": "npm run dev-back & npm run dev-front",
     "prod-hour": "npm run build && nodemon server/server.js",
-    "test": "jest --verbose",
-    "testjc": "jest --verbose --config=./__test__/jestjc.config.js"
+    "test": "jest --verbose --coverage",
+    "testjc": "jest --verbose --config=./__tests__/jestjc.config.js --coverage"
   },
   "repository": {
     "type": "git",

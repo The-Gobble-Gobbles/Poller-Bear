@@ -4,15 +4,15 @@ const path = require('path');
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const middleware = require('../server/middleware/userMiddleware.js');
+const { hashInfo } = require('../server/middleware/userMiddleware.js');
+
 
 describe('middlware encryption', () => {
   // create a mockfn that will simulate encryption
-  const hashMock = jest.fn(() => {
-    return {
+  const hashMock = {
       username: 'turkeyHash',
       password: 'gobbleHash'
-    }
-  });
+    };
 
   const dummyObj = {
     username: 'turkey',
@@ -22,18 +22,28 @@ describe('middlware encryption', () => {
   jest.mock('../server/middleware/userMiddleware.js');
   jest.mock('bcryptjs');
 
-  bcrypt.compare(dummyObj.username, hashMock.username).mockResolvedValue(true);
-  bcrypt.compare(dummyObj.password, hashMock.password).mockResolvedValue(true);
+  // bcrypt.compare(dummyObj.username, hashMock.username).mockResolvedValue(true);
+  // bcrypt.compare(dummyObj.password, hashMock.password).mockResolvedValue(true);
   
    // on return is a promise hashed value
-   bcrypt.hash(dummyObj.username, 5).mockResolvedValue(hashMock.username);
-   bcrypt.hash(dummyObj.password, 5).mockResolvedValue(hashMock.password);
+   const userRes =  bcrypt.hash(dummyObj.username, 5);
+   const passRes = bcrypt.hash(dummyObj.password, 5);
+
 
    // if the plain username and password match the hashed version, should return true;
+   
+
+  it('should return hashed obj when given an obj', async () => {
+    // extract dummyObj.username and password, and expect them to be strings
+    const result = await middleware.hashHelper(dummyObj);
+    const { username, password } = result;
+    expect(username).toEqual(expect.any(String));
+    expect(password).toEqual(expect.any(String));
+    // expect(middleware.hashHelper(dummyObj)).resolves.toBe(hashMock);
+  })
 
 
-
-  it('hashInfo return hashed values of usernamea and password', () => {
+  xit('hashInfo return hashed values of usernamea and password', () => {
 
     request(server)
       .post('/api/user/signup')
@@ -42,7 +52,16 @@ describe('middlware encryption', () => {
         expect(res.locals.username).tobe(hashMock.username);
         expect(res.locals.password).tobe(hashMock.password);
       })
-    
+    const { username, password } = dummyObj;
+      //expect hashInfo(dummyObj) to be hashMock
+    const req = {
+      body: {
+        username: username,
+        password: password
+      }
+    }
+
+
   })
 
   // it block expect username&password to not be the same as the one
