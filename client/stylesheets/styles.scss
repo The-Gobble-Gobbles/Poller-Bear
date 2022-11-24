@@ -111,10 +111,6 @@ body {
     width: 100;
 }
 
-.display-list-group2 {
-    //display: none;
-}
-
 .barchartdiv {
     min-width: 60%;
     max-width: 80%;
@@ -284,8 +280,9 @@ input {
 
 .signupEmailForm {
     box-sizing: content-box;
-    width: 50%;
-    padding: 10px
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
 button {
