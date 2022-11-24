@@ -76,7 +76,13 @@ body {
 #title {
     text-align: center;
     margin-top: 8vh;
+    font-size: 32px;
 }
+
+#title:hover {
+    cursor: default;
+}
+
 
 .displayPrompt {
     text-align: center;
@@ -314,7 +320,7 @@ button:active {
     align-self: center;
     align-content: center;
     height: 25px;
-    background-color: #4068a1
+    background-color: #374a74
 }
 
 .form-wrapper {
