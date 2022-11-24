@@ -5,6 +5,7 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const middleware = require('../server/middleware/userMiddleware.js');
 const { hashInfo } = require('../server/middleware/userMiddleware.js');
+const dbtester = require('../server/db/dbtester.js');
 
 
 describe('middlware encryption', () => {
@@ -43,6 +44,31 @@ describe('middlware encryption', () => {
   })
 
 
+  it('should write to dbtester filer', async () => {
+    // before this... the dbTest should have length current
+    const temp = dbtester.length;
+    const result = await middleware.sendHashToDB();
+    expect(temp).toBe(temp + 1);
+    
+    // Now, the dbTest should have length plus 1
+  })
+  /**
+   * database sending..
+   * 
+   * write to a local obj, and make sure that after invoking middleware hashinfo
+   * the local obj is then filled up with a {username: username, password: password}
+   * 
+   * 
+   * before invoking hashInfo, the items should NOT be in the database
+   * invoke hashInfo
+   * the items expected should now be in the database
+   * 
+   */
+
+
+
+
+
   xit('hashInfo return hashed values of usernamea and password', () => {
 
     request(server)
@@ -64,6 +90,7 @@ describe('middlware encryption', () => {
 
   })
 
+  
   // it block expect username&password to not be the same as the one
     // that got sent in the request body
 })
