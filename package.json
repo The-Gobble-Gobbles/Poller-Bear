@@ -48,7 +48,8 @@
     "react-chartjs-2": "^5.0.1",
     "react-dom": "^18.2.0",
     "react-router": "^6.4.3",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "styled-css-grid": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
