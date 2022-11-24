@@ -34,7 +34,7 @@ middleware.hashInfo = async (req, res, next) => {
     console.log('hashed?');
 
     // invoke sendHashToDB()
-    await middleware.sendHashToDB()
+    // await middleware.sendHashToDB()
 
     // invoke hash helper here with req.body passed in
     res.locals.hashedUsername = hashedUsername;
