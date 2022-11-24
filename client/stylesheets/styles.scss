@@ -145,7 +145,7 @@ body {
     max-width: 70%;
     border-radius: 10px;
     height: 50px;
-    min-width: 13%;
+    min-width: 20%;
 }
 
 .nav-link:visited {
@@ -223,7 +223,7 @@ input {
 }
 
 .pollOption input {
-    width: 30%
+    width: 40%
 }
 
 .addOption {
@@ -292,6 +292,7 @@ button {
 }
 
 button:hover {
+    cursor: pointer;
     background-color:  #b7d6eb;
     color: #283d63;
 }
@@ -301,6 +302,50 @@ button:active {
     color: white;
 }
 
+.pollUpdateButton{
+    display: grid;
+    align-self: center;
+    align-content: center;
+    height: 25px
+}
+
+.pollDeleteButton{
+    display: grid;
+    align-self: center;
+    align-content: center;
+    height: 25px;
+    background-color: #4068a1
+}
+
 .form-wrapper {
     width: 40%;
 }
+
+.userResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+.userInput {
+    display: flex;
+    margin-bottom: 12px;
+    gap: 2em;
+}
+
+.userInput input {
+    background-color: rgba(4, 3, 47, 0.17);
+    color: rgb(240, 240, 240);
+    border: 1px solid rgb(36, 37, 78);
+}
+
+.col-sm p {
+    margin: 0;
+    padding: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Montserrat;
+}
+
+

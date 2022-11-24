@@ -21,7 +21,8 @@ function App() {
   const snowflakes = [];
 
   for (let i = 0; i < 50; i++) {
-    snowflakes.push(<div className="snowflake"></div>)
+    let keyName = `snowflake${i}`
+    snowflakes.push(<div key={keyName} className="snowflake"></div>)
   }
   
 

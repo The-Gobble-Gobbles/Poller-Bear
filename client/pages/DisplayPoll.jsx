@@ -80,55 +80,41 @@ function DisplayPoll() {
       <div className="displayPrompt text-secondary">
         <h1>Poll Question: {{...prompt[0]}.poll_prompt}</h1>
       </div>        
-    {/* bar chart below */}
+      {/* bar chart below */}
       <div className="barchartdiv mb-5">
         <h3 className="text-center text-muted">Poll Graph</h3>
         <Bar className="display-barchart" data={pollGraph} /> 
       </div>
-    {/*  */}
-     
-   
-
-     {/* <h3 className="text-muted mt-5">Individual Results</h3> */}
-     {/* <div className="display-list-group2 mt-2 mb-5"> */}
-     {/* <table className="table table-hover table-light">
-       <thead>
-         <tr className="bg-primary table-warning">
-             
-             <th className="text-center" scope="col">Users</th>
-             <th className="text-center" scope="col">Vote</th>
-             <th className="text-center" scope="col">Delete</th>
-         </tr>
-       </thead>
-   
-       <tbody>
-
-             {   filteredPoll &&
-                 filteredPoll.map(poll => {
-                     return (
-                         <tr key={poll.id} value={poll.id} >
-                             
-                             <td className="text-center">{poll.users}</td>
-                             <td className="text-center">{poll.entries}</td>
-                             <td className="text-center"></td>
-                         </tr>
-                     )
-                 })
-             }
-        
-       </tbody>
-     </table> */}
-   {/* </div> */}
-     
-     {/*  */}
-
+      {/*  */}
+      {/* <h3 className="text-muted mt-5">Individual Results</h3> */}
+      {/* <div className="display-list-group2 mt-2 mb-5"> */}
+      {/* <table className="table table-hover table-light">
+        <thead>
+            <tr className="bg-primary table-warning">
+              <th className="text-center" scope="col">Users</th>
+              <th className="text-center" scope="col">Vote</th>
+              <th className="text-center" scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          { filteredPoll && filteredPoll.map(poll => {
+            return (
+              <tr key={poll.id} value={poll.id}>
+                <td className="text-center">{poll.users}</td>
+                <td className="text-center">{poll.entries}</td>
+                <td className="text-center"></td>
+              </tr>
+            )
+          }) }
+        </tbody>
+      </table> */}  
+     {/*</div> */}
      <h3 className="text-muted mt-5 ">Update Poll</h3>
      {   polls.filter(poll => poll.entries !== null) &&
       polls.filter(poll => poll.entries !== null).map(poll => { return (<UpdateTable poll={poll} setValue={setValue}></UpdateTable>) })
       }
-      <button type="submit" onClick={(e) => handleDelete(e, poll.id, poll.poll_id, poll.users, poll.entries)} className="btn btn-danger btn-sm ">Delete</button>
     </div>
-    )
+  )
 }
 
 
@@ -163,25 +149,25 @@ function UpdateTable({poll, setValue}) {
      }
 
      let reactkey = 0;
-     console.log('poll prop in updateTable component handlesubmit', poll.id)
+     // 5console.log('poll prop in updateTable component handlesubmit', poll.id)
 
      
   return (
-    <div>
+    <div className='userResult'>
         <form key={poll.id} action="">
-            <div className="form-row row mb-3">
-            <div className="col-sm">
-            Users <input type="text" value={users} onChange={e=> setUsers(e.target.value)} className="form-control" />
-         </div> 
-         <div className="col-sm">
-            Vote <input type="text" className="form-control" value={entries} onChange={e=> setEntries(e.target.value)}/>
-         </div> 
-            <button type="submit" onClick={(e) => handleSubmit(e, poll.id, poll.poll_id)} className="btn btn-warning btn-sm  ">Update</button>   
-          </div>
-          
-                    
+          <div className="userInput">
+              <div className="col-sm">
+                <p>User:</p>
+                <input type="text" value={users} onChange={e=> setUsers(e.target.value)} className="form-control" />
+              </div> 
+              <div className="col-sm">
+                <p>Vote:</p> 
+                <input type="text" className="form-control" value={entries} onChange={e=> setEntries(e.target.value)}/>
+              </div> 
+                <button type="submit" onClick={(e) => handleSubmit(e, poll.id, poll.poll_id)} className="pollUpdateButton">Update</button>
+                <button type="submit" onClick={(e) => handleDelete(e, poll.id, poll.poll_id, poll.users, poll.entries)} className="pollDeleteButton">Delete</button>   
+          </div>          
       </form>
-     
     </div>
   )
 }
