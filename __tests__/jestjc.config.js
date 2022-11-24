@@ -1,7 +1,7 @@
 const config = {
   "verbose": true,
   "testPathIgnorePatterns": ['./node_modules/'],
-  "testMatch": ['**/__test__/*.js?(x)'],
+  "testMatch": ['**/__tests__/*.js?(x)'],
   "moduleFileExtensions": ["js", "json", "jsx"],
 }
 
