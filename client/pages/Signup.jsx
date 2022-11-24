@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //Simple: create form with two text fields and add email and password
     //signup sends a post request to db containing name and password
     //check other inputs for bootstrap styling they used to keep it consistent
@@ -12,13 +12,9 @@ function Signup() {
         "password": ''
     })
 
-<<<<<<< HEAD
-    const handleSubmit = e => {
-        e.preventDefault();
-=======
     async function saveUser(data) {
         const response = await fetch('db url', {
-            method: 'POST",
+            method: "POST",
             headers: {
             "Content-Type": "application/json"
           },
@@ -33,18 +29,17 @@ function Signup() {
             "email": email.value,
             "password": password.value
         })
->>>>>>> 8f7cddbb1a1b6cf829193d9d2816b8561fdcbd55
+        console.log(user)
     } 
     return (
         <>
-            <h1>Signup</h1>
-            <form>
-                <div className="input-group mb-3">
-                <input  type="text" name="email" className="form-control" placeholder="email" required/>
-                <input  type="text" name="password" className="form-control" placeholder="password" required/>
-            <button type="submit" >Signup</button>
-        </div>
-    </form>
+            <hr id='newPollhr'></hr>
+            <h2 className="signupHTag">Signup</h2>
+            <form className="signupPage">
+                <input  type="text" name="email" className="signupEmailForm" placeholder="email" required/>
+                <input  type="text" name="password" className="signupEmailForm" placeholder="password" required/>
+                <button type="submit" className="signupSubmitButton">Signup</button>
+            </form>
         </>
 
     )
