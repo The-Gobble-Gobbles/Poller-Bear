@@ -26,7 +26,7 @@ app.use(cors());
 // app.use(express.static(path.resolve(__dirname, '../build')));
 // Option b)
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../build/index.html' ));
+  res.status(200).sendFile(path.resolve(__dirname, '../build/index.html' ));
 })
 app.get('/bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../build/bundle.js'));
@@ -36,7 +36,9 @@ app.get('/bundle.js.map', (req, res) => {
 });
 
 // Handle routes to user functionality
-app.use('/api/user', userRouter);
+app.use('/api/user', 
+  userRouter
+);
 
 // Handle routes to poll functionality
 app.use('/api/poll', pollRouter);
@@ -55,6 +57,13 @@ app.get("/api/flasks", async(req, res)=>{
       console.log(err)
     }
 })
+
+
+
+
+
+
+
 
 // Return all unmatched get requests to index.html
 app.get('/*', (req, res) => {

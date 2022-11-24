@@ -18,16 +18,24 @@ function App() {
     navigate(location.path);
   }, [])
 
+  const snowflakes = [];
+
+  for (let i = 0; i < 50; i++) {
+    let keyName = `snowflake${i}`
+    snowflakes.push(<div key={keyName} className="snowflake"></div>)
+  }
+  
+
   return (
     <>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-      <ul className="navbar-nav float-end">  
-        <li className="nav-link"><Link to='/login'>Login</Link></li>
-        <li className="nav-link"><Link to='/signup'>Sign-up</Link></li>
-        <li className="nav-link"><Link to='/'>Home</Link></li> 
-        <li className="nav-link"><Link to='/1/display'>Display1</Link></li>
-      </ul>
-    </nav>
+    {snowflakes}
+    <h1 id='title'>Poller Bear</h1>
+      <nav className="navbar">
+        <Link to='/' className="nav-link">Home</Link>
+        <Link to='/login' className="nav-link">Login</Link>
+        <Link to='/signup' className="nav-link">Sign-up</Link>
+        <Link to='/1/display' className="nav-link">Current Poll</Link>
+      </nav>
 
       <Routes>
         <Route path='/' element={<CreatePoll />} />
