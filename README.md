@@ -1,2 +1,2 @@
-# scratch
-Application to create polls and share 
+# Poller Bear
+A Winter themed application to create polls and share!
